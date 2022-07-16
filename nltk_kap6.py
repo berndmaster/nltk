@@ -206,9 +206,8 @@ print(punct_features(tokens, 3))
 featuresets = [(punct_features(tokens, i), (i in boundaries))
             for i in range(1, len(tokens)-1)
             if tokens[i] in '.?!']
-
 # create a list of labeled featuresets by selecting all the punctuation tokens, 
 # and tagging whether they are boundary tokens or not
-
-
-print(featuresets)
+# ergibt: 
+     #({'next-word-capitalized': True, 'prev-word1': 'n', 'prev-word2': 'elsevier', 'punct': '.', 'prev-word-is-one-char': True}, False)
+     #({'next-word-capitalized': False, 'prev-word1': 'group', 'prev-word2': 'publishing', 'punct': '.', 'prev-word-is-one-char': False}, True) 
