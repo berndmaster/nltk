@@ -33,6 +33,8 @@ train_names = labeled_names[1500:] # training_set: train the model # ab 1500
 devtest_names = labeled_names[500:1500] # dev_set: perform error analysis # von 500 bis 1500
 test_names = labeled_names[:500] # test set: final evaluation of system # bis 500
 
+# mengenaufteilung: ca. 90 % traindata und 10 % testdata
+
 train_set = [(gender_features(n), gender) for (n, gender) in train_names]
 devtest_set = [(gender_features(n), gender) for (n, gender) in devtest_names]
 test_set = [(gender_features(n), gender) for (n, gender) in test_names]
@@ -211,3 +213,16 @@ featuresets = [(punct_features(tokens, i), (i in boundaries))
 # ergibt: 
      #({'next-word-capitalized': True, 'prev-word1': 'n', 'prev-word2': 'elsevier', 'punct': '.', 'prev-word-is-one-char': True}, False)
      #({'next-word-capitalized': False, 'prev-word1': 'group', 'prev-word2': 'publishing', 'punct': '.', 'prev-word-is-one-char': False}, True) 
+
+     
+# Bewertung der Accuracy
+
+# True positives are relevant items that we correctly identified as relevant.
+# True negatives are irrelevant items that we correctly identified as irrelevant.
+# False positives (or Type I errors) are irrelevant items that we incorrectly identified as relevant.
+# False negatives (or Type II errors) are relevant items that we incorrectly identified as irrelevant.
+
+# Precision, which indicates how many of the items that we identified were relevant, is TP/(TP+FP).
+# Recall, which indicates how many of the relevant items that we identified, is TP/(TP+FN).
+# The F-Measure (or F-Score), which combines the precision and recall to give a single score, is defined to be the harmonic mean of the precision and recall: 
+# (2 × Precision × Recall) / (Precision + Recall).
